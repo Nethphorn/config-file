@@ -1,0 +1,25 @@
+pre-commit:
+  commands:
+    prettier:
+      glob: '**/*.{js,ts,svelte,json,md,css,scss,yml,yaml,html}'
+      run: pnpm exec prettier --check --ignore-unknown {staged_files}
+
+    eslint_check:
+      glob: '**/*.{js,ts,svelte}'
+      run: pnpm exec eslint --quiet --cache --cache-strategy content {staged_files}
+
+    spell:
+      glob: '**/*.{js,ts,svelte,md,json}'
+      run: pnpm exec cspell --no-progress {staged_files}
+
+pre-push:
+  parallel: true
+  commands:
+    check:
+      run: pnpm run check
+
+    test:
+      run: pnpm run test
+
+    audit:
+      run: pnpm audit --audit-level moderate

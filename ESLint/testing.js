@@ -1,4 +1,5 @@
-import vitestPlugin from "eslint-plugin-vitest";
+// ESLint/testing.js
+import vitestPlugin from "@vitest/eslint-plugin"; // Changed from "eslint-plugin-vitest"
 import playwrightPlugin from "eslint-plugin-playwright";
 
 /**

@@ -1,8 +1,12 @@
+import noCommentedCode from "eslint-plugin-no-commented-code";
 /**
  * @type {import('eslint').Linter.Config}
  * Clean code basics and fundamental standards.
  */
 export default {
+	plugins: {
+    "no-commented-code": noCommentedCode,
+  },
   rules: {
     // no undefined 
     'no-undef': 'off',

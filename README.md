@@ -57,8 +57,3 @@ export default [
 
 ## 🤖 GitHub Actions
 Reusable workflows are available in the `workflows/` directory. You can call them from your project's CI using `workflow_call`.
-
----
-
-## 🧑‍🤝‍🧑 Contributors
-Made with ❤️ for friends and collaborators. Feel free to open a PR to suggest new rules!

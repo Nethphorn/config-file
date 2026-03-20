@@ -1,29 +1,41 @@
 {
-  "name": "config-file",
-  "version": "1.0.0",
-  "type": "module",
-  "description": "Centralized, modular ESLint and GitHub Action standards.",
-  "scripts": {
-    "lint": "eslint .",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
-    "test": "vitest run"
-  },
-  "devDependencies": {
-    "@typescript-eslint/parser": "^8.57.1",
-    "cspell": "^9.7.0",
-    "eslint": "^9.0.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-playwright": "^2.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-svelte": "^2.46.1",
-    "eslint-plugin-vitest": "^0.5.4",
-    "prettier": "^3.3.3",
-    "prettier-plugin-svelte": "^3.3.1",
-    "svelte": "^5.54.0",
-    "svelte-check": "^4.0.0",
-    "svelte-eslint-parser": "^0.43.0",
-    "typescript": "^5.5.0",
-    "typescript-eslint": "^8.8.0",
-    "vitest": "^3.0.0"
-  }
+	"name": "config-file",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "Centralized, modular ESLint and GitHub Action standards.",
+	"scripts": {
+		"check": "svelte-kit sync && svelte-fast-check --incremental",
+		"check:ci": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"test:unit": "vitest",
+		"test": "pnpm run test:unit -- --run",
+		"lint": "prettier --check . && eslint .",
+		"lint:eslint": "eslint . --cache --cache-strategy content",
+		"lint:prettier": "prettier --check .",
+		"format": "prettier --write .",
+		"migrate": "node --env-file=.env scripts/migrate.mjs",
+		"spell": "cspell \"**/*.{js,ts,svelte,md,json}\" --no-progress",
+		"spell:fix": "cspell \"**/*.{js,ts,svelte,md,json}\" --no-progress --words-only"
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.58.2",
+		"@typescript-eslint/parser": "^8.57.1",
+		"@vitest/eslint-plugin": "^1.6.12",
+		"cspell": "^9.7.0",
+		"eslint": "^9.0.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-no-commented-code": "^1.0.10",
+		"eslint-plugin-playwright": "^2.1.0",
+		"eslint-plugin-svelte": "^2.46.1",
+		"lefthook": "^2.1.4",
+		"prettier": "^3.3.3",
+		"prettier-plugin-svelte": "^3.3.1",
+		"prettier-plugin-tailwindcss": "^0.7.2",
+		"svelte": "^5.54.0",
+		"svelte-check": "^4.0.0",
+		"svelte-eslint-parser": "^0.43.0",
+		"typescript": "^5.5.0",
+		"typescript-eslint": "^8.8.0",
+		"vitest": "^3.0.0"
+	}
 }
